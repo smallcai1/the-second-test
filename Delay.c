@@ -1,8 +1,6 @@
 #include <intrins.h>
 #include "Delay.h"
-
-/* 11.0592 MHz, 12T: 1 machine cycle � 1.085 us */
-
+// 微秒级延时 ： us表示需要延时的大致微秒数
 void delay_us(unsigned int us)
 {
     while (us--)
@@ -11,7 +9,7 @@ void delay_us(unsigned int us)
         _nop_();
     }
 }
-
+// 毫秒级延时 ： ms表示需要延时的大致毫秒数
 void delay_ms(unsigned int ms)
 {
     unsigned int i;
