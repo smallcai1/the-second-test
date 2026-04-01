@@ -1,12 +1,12 @@
 #include <REGX52.H>
 
-
+//引脚配置
 sbit LCD_RS=P2^6;
 sbit LCD_RW=P2^5;
 sbit LCD_EN=P2^7;
 #define LCD_DataPort P0
 
-
+//函数定义
 void LCD_Delay()
 {
 	unsigned char i, j;
@@ -19,6 +19,11 @@ void LCD_Delay()
 	} while (--i);
 }
 
+/**
+  * @brief  LCD1602写数据
+  * @param  Data 要写入的数据
+  * @retval 无
+  */
 
 void LCD_WriteCommand(unsigned char Command)
 {
@@ -59,10 +64,10 @@ void LCD_SetCursor(unsigned char Line,unsigned char Column)
 
 void LCD_Init1()
 {
-	LCD_WriteCommand(0x38);
-	LCD_WriteCommand(0x0c);
-	LCD_WriteCommand(0x06);
-	LCD_WriteCommand(0x01);
+	LCD_WriteCommand(0x38);//八位接口，两行显示
+	LCD_WriteCommand(0x0c);//显示开，光标关，闪烁关
+	LCD_WriteCommand(0x06);//数据读写操作后，光标自动加一，画面不动
+	LCD_WriteCommand(0x01); //光标复位，清屏
 }
 
 
